@@ -2,12 +2,24 @@ header {
     height: 80px;
     display: flex;
     align-items: center;
-    padding: 0.5em;
+    padding: 0.5em 1.3em;
     margin-bottom: 30px;
     font-size: 1.2em;
 
-    h1.logo {
+    .header-logo-side {
+        display: flex;
+        align-items: center;
+        gap: .7em;
         flex-grow: 1;
+
+        img {
+            height: 3em;
+        }
+
+        h1 {
+            font-family: 'Parisienne';
+            font-size: 2rem;
+        }
     }
 
     nav {

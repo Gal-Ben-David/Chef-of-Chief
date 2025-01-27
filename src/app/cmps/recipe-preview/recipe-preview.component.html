@@ -3,7 +3,9 @@
         <img src="{{recipe.by.imgUrl}}" class="user-img" />
         <span class="recipe-author">{{recipe.by.fullname}}</span>
     </div>
-    <img src="{{recipe.imgUrl}}" class="recipe-img" />
+    <div class="recipe-img-container">
+        <img src="{{recipe.imgUrl}}" class="recipe-img" />
+    </div>
     <div class="icons-area">
         <div class="right-icons">
             <div><span [innerHTML]="icons['heart']"></span> <span>{{recipe.likedBy.length}}</span></div>
