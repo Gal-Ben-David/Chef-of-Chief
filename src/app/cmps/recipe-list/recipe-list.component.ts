@@ -12,5 +12,8 @@ import { CommonModule } from '@angular/common';
 export class RecipeListComponent {
   @Input() recipes: RecipeModel[] | null = null
 
+  trackByFn(idx: number, recipe: RecipeModel): string {
+    return recipe._id
+  }
 
 }
