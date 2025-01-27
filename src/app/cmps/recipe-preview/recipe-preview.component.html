@@ -1,8 +1,19 @@
-<p>recipe-preview works!</p>
-
 <section class="recipe-preview">
     <div class="author-data">
         <img src="{{recipe.by.imgUrl}}" class="user-img" />
         <span class="recipe-author">{{recipe.by.fullname}}</span>
     </div>
+    <img src="{{recipe.imgUrl}}" class="recipe-img" />
+    <div class="icons-area">
+        <div class="right-icons">
+            <div><span [innerHTML]="icons['heart']"></span> <span>{{recipe.likedBy.length}}</span></div>
+            <div><span [innerHTML]="icons['comment']">Comments </span><span>{{recipe.comments.length}}</span></div>
+        </div>
+        <span [innerHTML]="icons['save']"></span>
+    </div>
+    <div class="recipe-description-and-author">
+        <span class="recipe-author">{{recipe.by.fullname}}</span>
+        <span class="recipe-txt">{{recipe.txt}}</span>
+    </div>
+
 </section>

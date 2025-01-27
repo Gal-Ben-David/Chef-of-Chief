@@ -1,0 +1,47 @@
+.recipe-preview {
+    display: grid;
+    max-width: 500px;
+    gap: 10px;
+
+    .user-img {
+        height: 30px;
+        border-radius: 50%;
+        aspect-ratio: 1/1;
+    }
+
+    .author-data {
+        display: flex;
+        gap: .6em;
+        align-items: center;
+    }
+
+    .icons-area {
+        display: flex;
+        justify-content: space-between;
+
+        .right-icons {
+            display: flex;
+            gap: .8em;
+
+            &>* {
+                display: flex;
+                align-items: center;
+                gap: .3em;
+
+                &>* {
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+    }
+
+    .recipe-description-and-author {
+        display: flex;
+        gap: .5em;
+
+        .recipe-author {
+            font-family: 'Mukta-Medium';
+        }
+    }
+}
