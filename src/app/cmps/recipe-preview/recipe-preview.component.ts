@@ -3,10 +3,11 @@ import { RecipeModel } from '../../models/recipe.model';
 import { CommonModule } from '@angular/common';
 import { SvgService } from '../../services/svg.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { RelativeTimePipe } from '../../custom-pipe/relative-time.pipe';
 
 @Component({
   selector: 'recipe-preview',
-  imports: [CommonModule],
+  imports: [CommonModule, RelativeTimePipe],
   templateUrl: './recipe-preview.component.html',
   styleUrl: './recipe-preview.component.scss'
 })

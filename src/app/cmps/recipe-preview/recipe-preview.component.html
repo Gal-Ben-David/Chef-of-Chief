@@ -21,7 +21,7 @@
             <span class="recipe-txt">{{recipe.txt}}</span>
         </div>
         <p *ngIf="recipe.comments.length>0" class="small-metadata">View all comments</p>
-        <p class="small-metadata">{{ recipe.createdAt | date: 'medium' }}</p>
+        <p class="small-metadata">{{ recipe.createdAt | relativeTime }}</p>
     </div>
 
 </section>
