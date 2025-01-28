@@ -95,7 +95,7 @@ export const recipes: Array<RecipeModel> = [
                     fullname: 'Dob',
                     imgUrl: 'http://some-img',
                 },
-                txt: 'not good!',
+                txt: 'Yesss!',
             },
         ],
         likedBy: [

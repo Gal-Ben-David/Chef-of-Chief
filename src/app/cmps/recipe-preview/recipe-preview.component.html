@@ -20,8 +20,11 @@
             <span class="recipe-author">{{recipe.by.fullname}}</span>
             <span class="recipe-txt">{{recipe.txt}}</span>
         </div>
-        <p *ngIf="recipe.comments.length>0" class="small-metadata">View all comments</p>
+        <p *ngIf="recipe.comments.length>0" class="small-metadata comments-viewing" (click)="openModal('comments')">View
+            all comments</p>
         <p class="small-metadata">{{ recipe.createdAt | relativeTime }}</p>
     </div>
 
+    <modal *ngIf="isModalOpen" [component]="modalComponent" [data]="modalData" (close)="handleCloseModal()"
+        [ngClass]="{'modal-open': isModalOpen}" class="modal-container" />
 </section>

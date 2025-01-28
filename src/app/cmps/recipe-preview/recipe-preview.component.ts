@@ -4,15 +4,20 @@ import { CommonModule } from '@angular/common';
 import { SvgService } from '../../services/svg.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { RelativeTimePipe } from '../../custom-pipe/relative-time.pipe';
+import { ModalComponent } from '../modal/modal.component';
+import { CommentComponent } from '../comment/comment.component';
 
 @Component({
   selector: 'recipe-preview',
-  imports: [CommonModule, RelativeTimePipe],
+  imports: [CommonModule, RelativeTimePipe, ModalComponent],
   templateUrl: './recipe-preview.component.html',
   styleUrl: './recipe-preview.component.scss'
 })
 export class RecipePreviewComponent {
   @Input() recipe!: RecipeModel
+  isModalOpen = false
+  modalComponent: any
+  modalData: any
 
   private svgService = inject(SvgService)
   private sanitizer = inject(DomSanitizer)
@@ -28,5 +33,21 @@ export class RecipePreviewComponent {
       const svgContent = this.svgService.getIcon(iconName)
       this.icons[iconName] = this.sanitizer.bypassSecurityTrustHtml(svgContent)
     })
+  }
+
+  openModal(type: string): void {
+    this.isModalOpen = true
+
+    if (type === 'comments') {
+      this.modalComponent = CommentComponent
+      this.modalData = { comments: this.recipe.comments }
+      // } else if (type === 'settings') {
+      //   this.modalComponent = SettingsComponent;
+      // }
+    }
+  }
+
+  handleCloseModal(): void {
+    this.isModalOpen = false
   }
 }

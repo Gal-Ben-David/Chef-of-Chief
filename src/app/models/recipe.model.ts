@@ -8,13 +8,13 @@ export interface RecipeModel {
         imgUrl: string,
     },
     loc?: Location,
-    comments: Array<Comment> | [],
+    comments: Array<CommentModel> | [],
     likedBy: Array<Like> | [],
     tags: string[],
     createdAt: number
 }
 
-export interface Comment {
+export interface CommentModel {
     id: string,
     by: {
         _id: string,
