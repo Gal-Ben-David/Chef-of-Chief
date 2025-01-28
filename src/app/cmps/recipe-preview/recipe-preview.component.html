@@ -3,6 +3,7 @@
         <img src="{{recipe.by.imgUrl}}" class="user-img" />
         <span class="recipe-author">{{recipe.by.fullname}}</span>
     </div>
+
     <div class="recipe-img-container">
         <img src="{{recipe.imgUrl}}" class="recipe-img" />
     </div>
@@ -13,9 +14,14 @@
         </div>
         <span [innerHTML]="icons['save']"></span>
     </div>
-    <div class="recipe-description-and-author">
-        <span class="recipe-author">{{recipe.by.fullname}}</span>
-        <span class="recipe-txt">{{recipe.txt}}</span>
+
+    <div class="recipe-metadata">
+        <div class="recipe-description-and-author">
+            <span class="recipe-author">{{recipe.by.fullname}}</span>
+            <span class="recipe-txt">{{recipe.txt}}</span>
+        </div>
+        <p *ngIf="recipe.comments.length>0" class="small-metadata">View all comments</p>
+        <p class="small-metadata">{{ recipe.createdAt | date: 'medium' }}</p>
     </div>
 
 </section>

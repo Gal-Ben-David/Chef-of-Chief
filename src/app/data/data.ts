@@ -55,6 +55,7 @@ export const recipes: Array<RecipeModel> = [
             },
         ],
         tags: ['fun', 'romantic'],
+        createdAt: 1737898687000
     },
     {
         _id: 's102',
@@ -110,5 +111,6 @@ export const recipes: Array<RecipeModel> = [
             },
         ],
         tags: ['fun', 'romantic'],
+        createdAt: 1737985087000
     }
 ]

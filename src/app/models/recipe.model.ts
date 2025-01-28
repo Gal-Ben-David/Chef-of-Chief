@@ -11,6 +11,7 @@ export interface RecipeModel {
     comments: Array<Comment> | [],
     likedBy: Array<Like> | [],
     tags: string[],
+    createdAt: number
 }
 
 export interface Comment {
