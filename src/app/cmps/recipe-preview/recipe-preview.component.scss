@@ -3,10 +3,21 @@
     max-width: 500px;
     gap: 10px;
 
-    .author-data {
+    .recipe-preview-header {
         display: flex;
-        gap: .6em;
-        align-items: center;
+
+        .author-data {
+            display: flex;
+            flex-grow: 1;
+            gap: .6em;
+            align-items: center;
+        }
+
+        .more-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
     }
 
     .recipe-img-container {

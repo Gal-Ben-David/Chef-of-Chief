@@ -1,7 +1,10 @@
 <section class="recipe-preview">
-    <div class="author-data">
-        <img src="{{recipe.by.imgUrl}}" class="user-img" />
-        <span class="recipe-author">{{recipe.by.fullname}}</span>
+    <div class="recipe-preview-header">
+        <div class="author-data">
+            <img src="{{recipe.by.imgUrl}}" class="user-img" />
+            <span class="recipe-author">{{recipe.by.fullname}}</span>
+        </div>
+        <span [innerHTML]="icons['more']" class="icon more-icon"></span>
     </div>
 
     <div class="recipe-img-container">

@@ -25,7 +25,7 @@ export class RecipePreviewComponent {
   icons: { [key: string]: SafeHtml } = {}
 
   ngOnInit(): void {
-    this.loadIcons(['heart', 'comment', 'save'])
+    this.loadIcons(['heart', 'comment', 'save', 'more'])
   }
 
   private loadIcons(iconNames: string[]): void {
