@@ -5,7 +5,7 @@ export const user: UserModel = {
     username: 'Muko',
     password: 'mukmuk',
     fullname: 'Muki Muka',
-    imgUrl: '/img/user/user-default.png',
+    imgUrl: '/img/user/gal.png',
 
     following: [
         {

@@ -1,0 +1,31 @@
+@import '../../assets/setup/vars';
+
+.app-footer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100vw;
+    padding: .5em;
+
+    display: flex;
+    justify-content: center;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.069);
+    background-color: $clr-bg-1;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
+    .footer-actions {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 350px;
+
+        &>* {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+    }
+}
