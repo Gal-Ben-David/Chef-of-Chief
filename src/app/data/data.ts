@@ -21,14 +21,14 @@ export const recipes: Array<RecipeModel> = [
                 by: {
                     _id: 'u105',
                     fullname: 'Bob',
-                    imgUrl: 'http://some-img',
+                    imgUrl: '/img/user/user-default.png',
                 },
                 txt: 'good one!',
                 likedBy: [
                     {
                         _id: 'u105',
                         fullname: 'Bob',
-                        imgUrl: 'http://some-img',
+                        imgUrl: '/img/user/user-default.png',
                     },
                 ],
             },
@@ -37,7 +37,7 @@ export const recipes: Array<RecipeModel> = [
                 by: {
                     _id: 'u106',
                     fullname: 'Dob',
-                    imgUrl: 'http://some-img',
+                    imgUrl: '/img/user/user-default.png',
                 },
                 txt: 'not good!',
             },
@@ -46,12 +46,12 @@ export const recipes: Array<RecipeModel> = [
             {
                 _id: 'u105',
                 fullname: 'Bob',
-                imgUrl: 'http://some-img',
+                imgUrl: '/img/user/user-default.png',
             },
             {
                 _id: 'u106',
                 fullname: 'Dob',
-                imgUrl: 'http://some-img',
+                imgUrl: '/img/user/user-default.png',
             },
         ],
         tags: ['fun', 'romantic'],
@@ -77,14 +77,14 @@ export const recipes: Array<RecipeModel> = [
                 by: {
                     _id: 'u105',
                     fullname: 'Bob',
-                    imgUrl: 'http://some-img',
+                    imgUrl: '/img/user/user-default.png',
                 },
                 txt: 'good one!',
                 likedBy: [
                     {
                         _id: 'u105',
                         fullname: 'Bob',
-                        imgUrl: 'http://some-img',
+                        imgUrl: '/img/user/user-default.png',
                     },
                 ],
             },
@@ -93,7 +93,7 @@ export const recipes: Array<RecipeModel> = [
                 by: {
                     _id: 'u106',
                     fullname: 'Dob',
-                    imgUrl: 'http://some-img',
+                    imgUrl: '/img/user/user-default.png',
                 },
                 txt: 'Yesss!',
             },
@@ -102,12 +102,12 @@ export const recipes: Array<RecipeModel> = [
             {
                 _id: 'u105',
                 fullname: 'Bob',
-                imgUrl: 'http://some-img',
+                imgUrl: '/img/user/user-default.png',
             },
             {
                 _id: 'u106',
                 fullname: 'Dob',
-                imgUrl: 'http://some-img',
+                imgUrl: '/img/user/user-default.png',
             },
         ],
         tags: ['fun', 'romantic'],

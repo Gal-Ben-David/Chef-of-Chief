@@ -7,12 +7,19 @@
     <div class="recipe-img-container">
         <img src="{{recipe.imgUrl}}" class="recipe-img" />
     </div>
+
     <div class="icons-area">
         <div class="right-icons">
-            <div><span [innerHTML]="icons['heart']"></span> <span>{{recipe.likedBy.length}}</span></div>
-            <div><span [innerHTML]="icons['comment']">Comments </span><span>{{recipe.comments.length}}</span></div>
+            <div>
+                <span [innerHTML]="icons['heart']" class="icon"></span>
+                <span>{{recipe.likedBy.length}}</span>
+            </div>
+            <div>
+                <span [innerHTML]="icons['comment']" (click)="openModal('comments')" class="icon"></span>
+                <span>{{recipe.comments.length}}</span>
+            </div>
         </div>
-        <span [innerHTML]="icons['save']"></span>
+        <span [innerHTML]="icons['save']" class="icon"></span>
     </div>
 
     <div class="recipe-metadata">

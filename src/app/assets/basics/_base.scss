@@ -14,6 +14,12 @@ ul {
 
 img {
     display: block;
+
+    &.user-img {
+        height: 30px;
+        border-radius: 50%;
+        aspect-ratio: 1/1;
+    }
 }
 
 p {
@@ -24,4 +30,25 @@ p {
         opacity: .6;
         font-size: .9em;
     }
+}
+
+h3 {
+    margin: 0;
+
+    .comments-area & {
+        justify-self: center;
+        font-family: 'Mukta-Medium';
+    }
+}
+
+hr {
+    opacity: .2;
+
+    .comments-area & {
+        width: 100%;
+    }
+}
+
+.recipe-author {
+    font-family: 'Mukta-Medium';
 }

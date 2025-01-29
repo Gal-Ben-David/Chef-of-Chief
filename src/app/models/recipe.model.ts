@@ -8,24 +8,20 @@ export interface RecipeModel {
         imgUrl: string,
     },
     loc?: Location,
-    comments: Array<CommentModel> | [],
-    likedBy: Array<Like> | [],
+    comments: Array<Comment> | [],
+    likedBy: Array<ByUser> | [],
     tags: string[],
     createdAt: number
 }
 
-export interface CommentModel {
+export interface Comment {
     id: string,
-    by: {
-        _id: string,
-        fullname: string,
-        imgUrl: string,
-    },
+    by: ByUser,
     txt: string,
-    likedBy?: Array<Like>,
+    likedBy?: Array<ByUser>,
 }
 
-export interface Like {
+export interface ByUser {
     _id: string,
     fullname: string,
     imgUrl: string,

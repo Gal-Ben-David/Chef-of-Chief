@@ -3,12 +3,6 @@
     max-width: 500px;
     gap: 10px;
 
-    .user-img {
-        height: 30px;
-        border-radius: 50%;
-        aspect-ratio: 1/1;
-    }
-
     .author-data {
         display: flex;
         gap: .6em;
@@ -46,15 +40,15 @@
                 }
             }
         }
+
+        .icon {
+            cursor: pointer;
+        }
     }
 
     .recipe-description-and-author {
         display: flex;
         gap: .5em;
-
-        .recipe-author {
-            font-family: 'Mukta-Medium';
-        }
     }
 
     .comments-viewing {
