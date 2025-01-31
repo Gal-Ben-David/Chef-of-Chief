@@ -1,1 +1,2 @@
-<recipe-list [recipes]="recipes$ | async" />
+<router-outlet />
+<recipe-list *ngIf="!isEditRouteActive" [recipes]="recipes$ | async" />
