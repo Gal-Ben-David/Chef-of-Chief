@@ -6,7 +6,7 @@ import { AppFooterComponent } from '../cmps/app-footer/app-footer.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RecipeIndexComponent, AppHeaderComponent, AppFooterComponent],
+  imports: [RouterOutlet, RecipeIndexComponent, AppHeaderComponent, AppFooterComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

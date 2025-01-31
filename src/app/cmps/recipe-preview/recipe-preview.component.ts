@@ -6,10 +6,11 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { RelativeTimePipe } from '../../custom-pipe/relative-time.pipe';
 import { ModalComponent } from '../modal/modal.component';
 import { CommentComponent } from '../comment/comment.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'recipe-preview',
-  imports: [CommonModule, RelativeTimePipe, ModalComponent],
+  imports: [CommonModule, RelativeTimePipe, ModalComponent, RouterLink],
   templateUrl: './recipe-preview.component.html',
   styleUrl: './recipe-preview.component.scss'
 })

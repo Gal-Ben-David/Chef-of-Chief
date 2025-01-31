@@ -4,7 +4,7 @@
             <img src="{{recipe.by.imgUrl}}" class="user-img" />
             <span class="recipe-author">{{recipe.by.fullname}}</span>
         </div>
-        <span [innerHTML]="icons['more']" class="icon more-icon"></span>
+        <span [innerHTML]="icons['more']" class="icon more-icon" routerLink="/edit"></span>
     </div>
 
     <div class="recipe-img-container">
