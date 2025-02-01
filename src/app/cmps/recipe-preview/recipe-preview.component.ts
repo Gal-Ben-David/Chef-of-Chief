@@ -7,6 +7,7 @@ import { RelativeTimePipe } from '../../custom-pipe/relative-time.pipe';
 import { ModalComponent } from '../modal/modal.component';
 import { CommentComponent } from '../comment/comment.component';
 import { RouterLink } from '@angular/router';
+import { RecipeActionsComponent } from '../recipe-actions/recipe-actions.component';
 
 @Component({
   selector: 'recipe-preview',
@@ -42,9 +43,9 @@ export class RecipePreviewComponent {
     if (type === 'comments') {
       this.modalComponent = CommentComponent
       this.modalData = { comments: this.recipe.comments }
-      // } else if (type === 'settings') {
-      //   this.modalComponent = SettingsComponent;
-      // }
+    } else if (type === 'actions') {
+      this.modalComponent = RecipeActionsComponent
+      this.modalData = { recipeId: this.recipe._id }
     }
   }
 
