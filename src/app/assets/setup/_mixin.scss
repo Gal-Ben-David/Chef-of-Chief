@@ -1,0 +1,29 @@
+@import '../setup/vars';
+
+@mixin btn($type: regular) {
+    @if $type ==dark {
+        background-color: $clr-bg-1;
+
+        &:hover {
+            background-color: darken($clr-bg-1, 5%);
+        }
+    }
+
+    // @else if $type ==light {
+    //     background-color: $clr-btn-1;
+    //     color: $gray4;
+
+    //     &:hover {
+    //         background-color: darken($clr-bg-1, 5%);
+    //     }
+    // }
+
+    @else if $type =='clear' {
+        background-color: $clr-bg-1;
+
+        &:hover {
+            background-color: darken($clr-bg-1, 5%);
+        }
+    }
+
+}
