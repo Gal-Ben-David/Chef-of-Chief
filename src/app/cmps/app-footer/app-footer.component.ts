@@ -3,10 +3,11 @@ import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { SvgService } from '../../services/svg.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './app-footer.component.html',
   styleUrl: './app-footer.component.scss'
 })
@@ -20,7 +21,7 @@ export class AppFooterComponent {
   icons: { [key: string]: SafeHtml } = {}
 
   ngOnInit(): void {
-    this.loadIcons(['home', 'search', 'add'])
+    this.loadIcons(['home', 'search', 'create'])
   }
 
   private loadIcons(iconNames: string[]): void {

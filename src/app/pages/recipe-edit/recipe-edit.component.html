@@ -10,6 +10,18 @@
         </div>
     </div>
 
+    <div class="post-type" *ngIf="!recipe._id">
+        <span [ngClass]="{ 'active': postType === 'post' }" (click)="onChangePostType('post')">Post</span>
+        <span [ngClass]="{ 'active': postType === 'reel' }" (click)="onChangePostType('reel')">Reel</span>
+
+        <div>
+            <label for="file-upload" class="custom-file-label">
+                <span>Choose an image</span>
+            </label>
+            <input type="file" id="file-upload" class="file-input" name="file-upload" />
+        </div>
+    </div>
+
     <div class=" recipe-img-container">
         <img src="{{recipe.imgUrl}}" class="recipe-img" />
     </div>

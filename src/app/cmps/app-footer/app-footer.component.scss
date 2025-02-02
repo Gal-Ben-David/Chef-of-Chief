@@ -22,7 +22,7 @@
         align-items: center;
         width: 350px;
 
-        &>* {
+        &>*:not(.file-input) {
             display: flex;
             align-items: center;
             cursor: pointer;

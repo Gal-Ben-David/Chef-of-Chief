@@ -2,7 +2,7 @@
     <div class="footer-actions">
         <span [innerHTML]="icons['home']" class="icon"></span>
         <span [innerHTML]="icons['search']" class="icon"></span>
-        <span [innerHTML]="icons['add']" class="icon"></span>
+        <span [innerHTML]="icons['create']" class="icon" routerLink="/edit"></span>
         <img *ngIf="loggedInUser$ | async as user" [src]="user.imgUrl" class="user-img" />
     </div>
 </footer>

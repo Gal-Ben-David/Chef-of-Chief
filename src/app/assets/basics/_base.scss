@@ -51,6 +51,12 @@ hr {
     }
 }
 
+input {
+    &.file-input {
+        display: none;
+    }
+}
+
 .recipe-author {
     font-family: 'Mukta-Medium';
 }
