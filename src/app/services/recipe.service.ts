@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, of } from 'rxjs';
+import { BehaviorSubject, catchError, from, Observable, of, retry, tap, throwError } from 'rxjs';
 import { RecipeModel } from '../models/recipe.model';
 import { recipes } from '../data/data';
 import { UserService } from './user.service';
 import { UserModel } from '../models/user.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { makeId } from '../services/util.service'
+import { storageService } from './async-storage.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
+const ENTITY = 'recipes'
 @Injectable({
   providedIn: 'root'
 })
@@ -18,13 +21,31 @@ export class RecipeService {
 
 
   constructor(private userService: UserService) {
-    this._recipes$.next(recipes)
+    const recipes = JSON.parse(localStorage.getItem(ENTITY) || '[]')
+    if (!recipes || recipes.length === 0) {
+      localStorage.setItem(ENTITY, JSON.stringify(this._createRecipes()))
+    }
 
     this.userService.loggedInUser$.pipe(
       takeUntilDestroyed() // Automatically unsubscribes when component is destroyed
     ).subscribe(user => {
       this.loggedInUser = user
     })
+  }
+
+
+  public query() {
+    return from(storageService.query<RecipeModel>(ENTITY))
+      .pipe(
+        tap(recipes => {
+          // const filterBy = this._filterBy$.value
+          // const termRegex = new RegExp(filterBy.term, 'i')
+          // pets = pets.filter(pet => termRegex.test(pet.name))
+          this._recipes$.next(recipes)
+        }),
+        retry(1),
+        catchError(this._handleError)
+      )
   }
 
   public getEmptyRecipe(): Partial<RecipeModel> {
@@ -43,25 +64,46 @@ export class RecipeService {
   }
 
 
+  public getById(recipeId: string): Observable<RecipeModel> {
+    return from(storageService.get<RecipeModel>(ENTITY, recipeId))
+      .pipe(
+        retry(1),
+        catchError(this._handleError)
+      )
+  }
+
+
   public save(recipe: RecipeModel) {
-    return of(recipe._id ? this._edit(recipe) : this._add(recipe))
+    return recipe._id ? this._edit(recipe) : this._add(recipe)
   }
 
   private _add(recipe: RecipeModel) {
-    const recipes = [...this._recipes$.value]
-    const recipeToAdd = { ...recipe, _id: makeId() }
-    console.log('recipeToAdd', recipeToAdd)
-    recipes.push(recipeToAdd)
-    this._recipes$.next(recipes)
-    return recipe
+    return from(storageService.post(ENTITY, recipe))
+      .pipe(
+        tap(newRecipe => {
+          const recipes = [...this._recipes$.value]
+          recipes.push(newRecipe)
+          this._recipes$.next(recipes)
+          return newRecipe
+        }),
+        retry(1),
+        catchError(this._handleError)
+      )
   }
 
   private _edit(recipe: RecipeModel) {
-    const recipes = [...this._recipes$.value]
-    const recipeIdx = recipes.findIndex(_recipe => _recipe._id === recipe._id)
-    recipes[recipeIdx] = recipe
-    this._recipes$.next(recipes)
-    return recipe
+    return from(storageService.put(ENTITY, recipe))
+      .pipe(
+        tap(updatedRecipe => {
+          const recipes = [...this._recipes$.value]
+          const recipeIdx = recipes.findIndex(recipe => recipe._id === recipe._id)
+          recipes[recipeIdx] = updatedRecipe
+          this._recipes$.next(recipes)
+          return updatedRecipe
+        }),
+        retry(1),
+        catchError(this._handleError)
+      )
   }
 
   async uploadImg(imgData: string) {
@@ -80,6 +122,16 @@ export class RecipeService {
     } catch (err) {
       console.log(err)
     }
+  }
+
+  private _createRecipes() {
+    const newRecipes: RecipeModel[] = recipes
+    return newRecipes
+  }
+
+  private _handleError(err: HttpErrorResponse) {
+    console.log('err:', err)
+    return throwError(() => err)
   }
 
 }

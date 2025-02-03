@@ -7,7 +7,8 @@ export const storageService = {
 }
 
 interface EntityId {
-    _id: string
+    _id: string,
+    createdAt: number
 }
 
 function query<T>(entityType: string, delay = 200): Promise<T[]> {
@@ -25,6 +26,7 @@ async function get<T extends EntityId>(entityType: string, entityId: string): Pr
 async function post<T extends EntityId>(entityType: string, newEntity: T): Promise<T> {
     newEntity = JSON.parse(JSON.stringify(newEntity))
     newEntity._id = _makeId()
+    newEntity.createdAt = Date.now()
     const entities = await query<T>(entityType)
     entities.push(newEntity)
     _save(entityType, entities)

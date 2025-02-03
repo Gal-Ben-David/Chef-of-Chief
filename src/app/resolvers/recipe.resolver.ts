@@ -3,14 +3,15 @@ import { recipes } from '../data/data';
 import { RecipeModel } from '../models/recipe.model';
 import { inject } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
+import { catchError, of } from 'rxjs';
 
 export const recipeResolver: ResolveFn<Partial<RecipeModel>> = (route, state) => {
   const recipeService = inject(RecipeService)
   const recipeId = route.params['recipeId']
-  console.log('recipes', recipes)
-  let recipe: Partial<RecipeModel> = recipes.find(recipe => recipe._id === recipeId) || recipeService.getEmptyRecipe()
 
-  console.log('resolved recipe', recipe)
+  if (!recipeId) return of(recipeService.getEmptyRecipe())
 
-  return recipe
+  return recipeService.getById(recipeId).pipe(
+    catchError(() => of(recipeService.getEmptyRecipe())) // handle the fallback inside the resolver
+  )
 }
