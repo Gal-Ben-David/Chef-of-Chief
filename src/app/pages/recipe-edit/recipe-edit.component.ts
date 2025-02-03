@@ -50,4 +50,33 @@ export class RecipeEditComponent {
     this.postType = type
   }
 
+  onLoadImage(ev: Event) {
+    const reader = new FileReader()
+    const input = ev.target as HTMLInputElement
+    if (!input.files || input.files.length === 0) return
+
+    const file = input.files[0]
+
+    reader.onload = async (event: ProgressEvent<FileReader>) => {
+      const base64Img = event.target?.result as string
+
+      try {
+        const uploadedImgUrl = await this.recipeService.uploadImg(base64Img)
+        this.recipe.imgUrl = uploadedImgUrl
+
+        // const img = new Image()
+        // img.crossOrigin = 'Anonymous'
+        // img.src = uploadedImgUrl
+        // img.onload = () => {
+        //   this.recipe.imgUrl = uploadedImgUrl
+        // }
+
+      } catch (error) {
+        console.error('Image upload failed:', error)
+      }
+    }
+
+    reader.readAsDataURL(file)
+  }
+
 }

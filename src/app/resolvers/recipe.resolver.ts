@@ -7,9 +7,10 @@ import { RecipeService } from '../services/recipe.service';
 export const recipeResolver: ResolveFn<Partial<RecipeModel>> = (route, state) => {
   const recipeService = inject(RecipeService)
   const recipeId = route.params['recipeId']
+  console.log('recipes', recipes)
   let recipe: Partial<RecipeModel> = recipes.find(recipe => recipe._id === recipeId) || recipeService.getEmptyRecipe()
 
-  console.log('recipe', recipe)
+  console.log('resolved recipe', recipe)
 
   return recipe
 }

@@ -18,11 +18,11 @@
             <label for="file-upload" class="custom-file-label">
                 <span>Choose an image</span>
             </label>
-            <input type="file" id="file-upload" class="file-input" name="file-upload" />
+            <input type="file" id="file-upload" class="file-input" name="file-upload" (change)="onLoadImage($event)" />
         </div>
     </div>
 
-    <div class=" recipe-img-container">
+    <div class="recipe-img-container">
         <img src="{{recipe.imgUrl}}" class="recipe-img" />
     </div>
 

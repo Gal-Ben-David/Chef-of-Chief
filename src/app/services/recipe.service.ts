@@ -5,6 +5,7 @@ import { recipes } from '../data/data';
 import { UserService } from './user.service';
 import { UserModel } from '../models/user.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { makeId } from '../services/util.service'
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,9 @@ export class RecipeService {
 
   private _add(recipe: RecipeModel) {
     const recipes = [...this._recipes$.value]
-    recipes.push(recipe)
+    const recipeToAdd = { ...recipe, _id: makeId() }
+    console.log('recipeToAdd', recipeToAdd)
+    recipes.push(recipeToAdd)
     this._recipes$.next(recipes)
     return recipe
   }
@@ -59,6 +62,24 @@ export class RecipeService {
     recipes[recipeIdx] = recipe
     this._recipes$.next(recipes)
     return recipe
+  }
+
+  async uploadImg(imgData: string) {
+    const CLOUD_NAME = 'webify'
+    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
+    const formData = new FormData()
+    formData.append('file', imgData)
+    formData.append('upload_preset', 'webify')
+    try {
+      const res = await fetch(UPLOAD_URL, {
+        method: 'POST',
+        body: formData,
+      })
+      const data = await res.json()
+      return data.secure_url
+    } catch (err) {
+      console.log(err)
+    }
   }
 
 }
