@@ -1,6 +1,10 @@
+@import '../../assets/setup/vars';
+@import '../../assets/setup/mixin';
+
 .recipe-edit {
     justify-self: center;
-    margin-block-end: 50px;
+    gap: 1em;
+    margin-block-end: 100px;
 
     .edit-buttons {
         display: flex;
@@ -8,6 +12,38 @@
     }
 
     .active {
-        color: blue;
+        background-color: rgba(128, 128, 128, 0.07);
+    }
+
+    .post-type {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .post-options {
+            display: flex;
+            border-radius: 200px;
+            background-color: $clr-bg-3;
+
+            &>* {
+                padding: .3em 1.5em;
+                cursor: pointer;
+            }
+
+            &>:first-child {
+                border-radius: 200px 0 0 200px;
+            }
+
+            &>:last-child {
+                border-radius: 0 200px 200px 0;
+
+            }
+
+            &>*:not(:first-child) {
+                border-left: 1px solid $clr-border-1;
+            }
+        }
+
+
     }
 }

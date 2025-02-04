@@ -28,7 +28,7 @@
     <div class="recipe-metadata">
         <div class="recipe-description-and-author">
             <span class="recipe-author">{{recipe.by.fullname}}</span>
-            <span class="recipe-txt">{{recipe.txt}}</span>
+            <pre class="recipe-description">{{recipe.txt}}</pre>
         </div>
         <p *ngIf="recipe.comments.length>0" class="small-metadata comments-viewing" (click)="openModal('comments')">View
             all comments</p>

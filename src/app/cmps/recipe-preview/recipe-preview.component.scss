@@ -59,8 +59,19 @@
     }
 
     .recipe-description-and-author {
-        display: flex;
-        gap: .5em;
+        position: relative;
+
+        .recipe-author {
+            float: left;
+            margin-right: 0.5em;
+        }
+
+        .recipe-description {
+            overflow-wrap: break-word;
+            /* Ensures that long text breaks properly */
+            word-wrap: break-word;
+
+        }
     }
 
     .comments-viewing {

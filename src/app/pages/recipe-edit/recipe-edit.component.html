@@ -11,12 +11,14 @@
     </div>
 
     <div class="post-type" *ngIf="!recipe._id">
-        <span [ngClass]="{ 'active': postType === 'post' }" (click)="onChangePostType('post')">Post</span>
-        <span [ngClass]="{ 'active': postType === 'reel' }" (click)="onChangePostType('reel')">Reel</span>
+        <div class="post-options">
+            <span [ngClass]="{ 'active': postType === 'post' }" (click)="onChangePostType('post')">Post</span>
+            <span [ngClass]="{ 'active': postType === 'reel' }" (click)="onChangePostType('reel')">Reel</span>
+        </div>
 
         <div>
             <label for="file-upload" class="custom-file-label">
-                <span>Choose an image</span>
+                <span class="btn btn-dark btn-round">Upload an image</span>
             </label>
             <input type="file" id="file-upload" class="file-input" name="file-upload" (change)="onLoadImage($event)" />
         </div>
@@ -27,5 +29,5 @@
     </div>
 
     <textarea cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5"
-        placeholder="Type here..." [(ngModel)]="recipe.txt" class="description"></textarea>
+        placeholder="Add a caption..." [(ngModel)]="recipe.txt" class="description"></textarea>
 </section>

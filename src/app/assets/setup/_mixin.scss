@@ -2,10 +2,13 @@
 
 @mixin btn($type: regular) {
     @if $type ==dark {
-        background-color: $clr-bg-1;
+        background-color: $clr-bg-2;
+        color: $clr-bg-1;
+        border-radius: 100vh;
+        padding: .3em 1em;
 
         &:hover {
-            background-color: darken($clr-bg-1, 5%);
+            background-color: darken($clr-bg-2, 5%);
         }
     }
 
