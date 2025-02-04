@@ -26,7 +26,7 @@ export class RecipeIndexComponent {
   isEditRouteActive = false
   private routeSubscription!: Subscription
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private router: Router) {
     this.routeSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         // Check if 'edit' exists in the current URL

@@ -51,7 +51,7 @@ export class RecipeService {
   public getEmptyRecipe(): Partial<RecipeModel> {
     return {
       txt: '',
-      imgUrl: '',
+      imgUrl: '/img/new-post.jpeg',
       by: {
         _id: this.loggedInUser._id,
         fullname: this.loggedInUser.fullname,

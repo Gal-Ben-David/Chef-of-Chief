@@ -1,8 +1,13 @@
-.edit-buttons {
-    display: flex;
-    justify-content: space-between;
-}
+.recipe-edit {
+    justify-self: center;
+    margin-block-end: 50px;
 
-.active {
-    color: blue;
+    .edit-buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .active {
+        color: blue;
+    }
 }

@@ -1,9 +1,9 @@
 <section class="recipe-edit recipe-preview">
+    <div class="edit-buttons">
+        <button class="btn btn-clear" (click)="onCancelEdit()">Cancel</button>
+        <button class="btn btn-clear" (click)="onSaveRecipe()">Done</button>
+    </div>
     <div class="recipe-preview-header">
-        <div class="edit-buttons">
-            <button class="btn btn-clear" (click)="onCancelEdit()">Cancel</button>
-            <button class="btn btn-clear" (click)="onSaveRecipe()">Done</button>
-        </div>
         <div class="author-data">
             <img src="{{recipe.by.imgUrl}}" class="user-img" />
             <span class="recipe-author">{{recipe.by.fullname}}</span>
