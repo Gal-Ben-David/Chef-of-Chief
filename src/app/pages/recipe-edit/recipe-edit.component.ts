@@ -7,10 +7,11 @@ import { FormsModule } from '@angular/forms';
 import { RecipeService } from '../../services/recipe.service';
 import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
+import { TextFieldModule } from '@angular/cdk/text-field'
 
 @Component({
   selector: 'recipe-edit',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, TextFieldModule],
   templateUrl: './recipe-edit.component.html',
   styleUrl: './recipe-edit.component.scss'
 })

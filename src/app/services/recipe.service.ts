@@ -96,7 +96,7 @@ export class RecipeService {
       .pipe(
         tap(updatedRecipe => {
           const recipes = [...this._recipes$.value]
-          const recipeIdx = recipes.findIndex(recipe => recipe._id === recipe._id)
+          const recipeIdx = recipes.findIndex(_recipe => _recipe._id === recipe._id)
           recipes[recipeIdx] = updatedRecipe
           this._recipes$.next(recipes)
           return updatedRecipe

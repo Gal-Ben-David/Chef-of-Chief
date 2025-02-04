@@ -26,5 +26,6 @@
         <img src="{{recipe.imgUrl}}" class="recipe-img" />
     </div>
 
-    <input [(ngModel)]="recipe.txt" type="text" name="description" id="description" />
+    <textarea cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5"
+        placeholder="Type here..." [(ngModel)]="recipe.txt" class="description"></textarea>
 </section>
