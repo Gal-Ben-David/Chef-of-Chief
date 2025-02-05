@@ -1,5 +1,18 @@
+@import '../../assets/setup/vars';
+@import '../../assets/setup/mixin';
+
 .recipe-actions {
     &>* {
         cursor: pointer;
     }
+
+    .deleting-post {
+        color: $clr-delete;
+    }
+
+    .delete-buttons {
+        display: flex;
+        gap: 1em;
+    }
+
 }

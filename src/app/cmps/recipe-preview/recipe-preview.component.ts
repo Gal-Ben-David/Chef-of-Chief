@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, EventEmitter, inject, Input } from '@angular/core';
 import { RecipeModel } from '../../models/recipe.model';
 import { CommonModule } from '@angular/common';
 import { SvgService } from '../../services/svg.service';
@@ -20,6 +20,7 @@ export class RecipePreviewComponent {
   isModalOpen = false
   modalComponent: any
   modalData: any
+  modalType: string = ''
 
   private svgService = inject(SvgService)
   private sanitizer = inject(DomSanitizer)
@@ -39,13 +40,16 @@ export class RecipePreviewComponent {
 
   openModal(type: string): void {
     this.isModalOpen = true
+    console.log('Received modal data:', type)
 
     if (type === 'comments') {
       this.modalComponent = CommentComponent
       this.modalData = { comments: this.recipe.comments }
     } else if (type === 'actions') {
       this.modalComponent = RecipeActionsComponent
-      this.modalData = { recipeId: this.recipe._id }
+      this.modalData = {
+        recipeId: this.recipe._id,
+      }
     }
   }
 

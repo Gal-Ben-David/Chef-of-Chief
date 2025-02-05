@@ -20,7 +20,6 @@
     //         background-color: darken($clr-bg-1, 5%);
     //     }
     // }
-
     @else if $type =='clear' {
         background-color: $clr-bg-1;
 
@@ -29,4 +28,12 @@
         }
     }
 
+    @else if $type =='delete' {
+        background-color: $clr-delete;
+        color: $clr-bg-1;
+
+        &:hover {
+            background-color: darken($clr-delete, 5%);
+        }
+    }
 }

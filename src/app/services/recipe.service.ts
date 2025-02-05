@@ -72,6 +72,21 @@ export class RecipeService {
       )
   }
 
+  public remove(recipeId: string) {
+    return from(storageService.remove(ENTITY, recipeId))
+      .pipe(
+        tap(() => {
+          const recipes = [...this._recipes$.value]
+          const recipeIdx = recipes.findIndex(recipe => recipe._id === recipeId)
+          recipes.splice(recipeIdx, 1)
+          this._recipes$.next(recipes)
+          return recipeId
+        }),
+        retry(1),
+        catchError(this._handleError)
+      )
+  }
+
 
   public save(recipe: RecipeModel) {
     return recipe._id ? this._edit(recipe) : this._add(recipe)

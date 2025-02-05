@@ -1,5 +1,4 @@
 import { Component, ViewChild, ViewContainerRef, Input, OnInit, Type, Output, EventEmitter } from '@angular/core';
-
 @Component({
   selector: 'modal',
   imports: [],
@@ -31,5 +30,4 @@ export class ModalComponent {
   closeModal(): void {
     this.close.emit()
   }
-
 }

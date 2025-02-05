@@ -1,3 +1,12 @@
 <section class="recipe-actions">
-    <div routerLink="/edit/{{recipeId}}">Edit</div>
+    <div class="action-item" routerLink="/edit/{{recipeId}}">Edit</div>
+    <div class="deleting-post action-item" (click)="onToggleDeleteRecipe()">Delete</div>
+    <div class="deleting-confirmation" *ngIf="isDeleteRecipe">
+        <hr />
+        <h4>Delete Post?</h4>
+        <div class="delete-buttons">
+            <button class="btn btn-clear" (click)="onToggleDeleteRecipe()">Cancel</button>
+            <button class="btn btn-delete" (click)="onDeleteRecipe()">Delete</button>
+        </div>
+    </div>
 </section>

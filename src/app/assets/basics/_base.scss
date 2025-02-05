@@ -73,7 +73,7 @@ textarea {
 }
 
 .btn {
-    padding: 0.5em 1em;
+    padding: 0.3em 1em;
     border: none;
     border-radius: 0.3em;
     margin-inline-start: 0;
@@ -86,8 +86,8 @@ textarea {
         @include btn($type: dark);
     }
 
-    &-light {
-        @include btn($type: light);
+    &-delete {
+        @include btn($type: 'delete');
     }
 
     &-clear {
