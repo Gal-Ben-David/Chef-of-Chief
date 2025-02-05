@@ -1,8 +1,46 @@
+@import '../../assets/setup/vars';
+
 .comments-area {
     display: grid;
+    grid-template-rows: 1.5em 1.5em 1fr;
+    height: 100%;
+    align-content: start;
 
-    .comment-list {
-        display: grid;
-        gap: 1em;
+    .comments-area-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .comment-list {
+            display: grid;
+            gap: 1em;
+            overflow-y: auto;
+        }
+
+        .adding-comment-container {
+            margin-block-start: auto;
+
+            .adding-comment-content {
+                display: flex;
+                gap: 1em;
+                align-items: start;
+            }
+
+            .comment-txt {
+                display: flex;
+                gap: 1em;
+                width: 100%;
+                border: 1px solid $clr-border-1;
+                border-radius: 100vh;
+                overflow: hidden;
+
+                .btn-send-comment {
+                    bottom: .4em;
+                    right: .5em;
+                    align-self: center;
+                    margin-inline-end: .5em;
+                }
+            }
+        }
     }
 }

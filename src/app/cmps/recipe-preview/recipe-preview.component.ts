@@ -8,6 +8,7 @@ import { ModalComponent } from '../modal/modal.component';
 import { CommentComponent } from '../comment/comment.component';
 import { RouterLink } from '@angular/router';
 import { RecipeActionsComponent } from '../recipe-actions/recipe-actions.component';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'recipe-preview',
@@ -24,6 +25,8 @@ export class RecipePreviewComponent {
 
   private svgService = inject(SvgService)
   private sanitizer = inject(DomSanitizer)
+  private userService = inject(UserService)
+  loggedInUser$ = this.userService.loggedInUser$
 
   icons: { [key: string]: SafeHtml } = {}
 
@@ -40,11 +43,13 @@ export class RecipePreviewComponent {
 
   openModal(type: string): void {
     this.isModalOpen = true
-    console.log('Received modal data:', type)
 
     if (type === 'comments') {
       this.modalComponent = CommentComponent
-      this.modalData = { comments: this.recipe.comments }
+      this.modalData = {
+        comments: this.recipe.comments,
+        loggedInUser$: this.loggedInUser$
+      }
     } else if (type === 'actions') {
       this.modalComponent = RecipeActionsComponent
       this.modalData = {

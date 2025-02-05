@@ -1,4 +1,5 @@
 @import '../setup/mixin';
+@import '../setup/vars';
 
 html {
     font-family: 'Mukta-light';
@@ -63,9 +64,20 @@ pre {
 }
 
 textarea {
-    border: none;
     font-family: inherit;
     padding-inline-start: .5em;
+    border: none;
+
+    .comment-txt & {
+        flex-grow: 1;
+        padding-inline-start: 3.5em;
+        padding-inline-end: 1.5em;
+    }
+
+    .comment-txt &:focus {
+        border: none;
+        outline: none;
+    }
 }
 
 .recipe-author {

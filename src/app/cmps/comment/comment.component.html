@@ -1,9 +1,22 @@
 <div class="comments-area">
     <h3>Comments</h3>
     <hr />
-    <ul class="comment-list">
-        <li *ngFor="let comment of comments">
-            <comment-preview [comment]="comment" />
-        </li>
-    </ul>
+    <div class="comments-area-content">
+        <ul class="comment-list">
+            <li *ngFor="let comment of comments">
+                <comment-preview [comment]="comment" />
+            </li>
+        </ul>
+
+        <div class="adding-comment-container">
+            <div class="adding-comment-content" *ngIf="loggedInUser$ | async as loggedInUser">
+                <img src="{{loggedInUser.imgUrl}}" class="user-img" />
+                <div class="comment-txt">
+                    <textarea cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+                        cdkAutosizeMaxRows="5" placeholder="Add a comment" [(ngModel)]="commentTxt"></textarea>
+                    <button [disabled]="!commentTxt.trim()" class="btn btn-dark btn-send-comment">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
