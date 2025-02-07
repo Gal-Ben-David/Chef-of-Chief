@@ -14,7 +14,8 @@
     <div class="icons-area">
         <div class="right-icons">
             <div>
-                <span [innerHTML]="icons['heart']" class="icon"></span>
+                <span [innerHTML]="likedByLoggedInUser ? icons['fullHeart'] : icons['heart']" class="icon"
+                    (click)="onToggleLike()"></span>
                 <span>{{recipe.likedBy.length}}</span>
             </div>
             <div>

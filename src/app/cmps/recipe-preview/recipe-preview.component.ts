@@ -11,6 +11,7 @@ import { RecipeActionsComponent } from '../recipe-actions/recipe-actions.compone
 import { UserService } from '../../services/user.service';
 import { filter, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { RecipeService } from '../../services/recipe.service';
 
 @Component({
   selector: 'recipe-preview',
@@ -29,13 +30,16 @@ export class RecipePreviewComponent {
   private sanitizer = inject(DomSanitizer)
   private userService = inject(UserService)
   private destroyRef = inject(DestroyRef)
+  private recipeService = inject(RecipeService)
+
   loggedInUser$ = this.userService.loggedInUser$
   byUser!: ByUser
+  likedByLoggedInUser: boolean = false
 
   icons: { [key: string]: SafeHtml } = {}
 
   ngOnInit(): void {
-    this.loadIcons(['heart', 'comment', 'save', 'more'])
+    this.loadIcons(['heart', 'fullHeart', 'comment', 'save', 'more'])
 
     this.loggedInUser$
       .pipe(
@@ -53,6 +57,8 @@ export class RecipePreviewComponent {
         error: err => console.log('Error fetching user:', err),
         complete: () => console.log('Mini user saved')
       })
+
+    this.likedByLoggedInUser = this.recipe.likedBy.some(likedBy => likedBy._id === this.byUser._id)
   }
 
   private loadIcons(iconNames: string[]): void {
@@ -81,5 +87,21 @@ export class RecipePreviewComponent {
 
   handleCloseModal(): void {
     this.isModalOpen = false
+  }
+
+  onToggleLike() {
+    this.likedByLoggedInUser = !this.likedByLoggedInUser
+    let recipeToSave = { ...this.recipe }
+    const newLikedByList = this.likedByLoggedInUser ? [...recipeToSave.likedBy, { ...this.byUser }] :
+      recipeToSave.likedBy.filter(likeBy => likeBy._id !== this.byUser._id)
+
+    recipeToSave.likedBy = newLikedByList
+
+    this.recipeService.save(recipeToSave)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        error: err => console.log('err:', err),
+        complete: () => console.log('Toggling like')
+      })
   }
 }

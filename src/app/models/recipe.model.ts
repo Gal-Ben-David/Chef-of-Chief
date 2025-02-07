@@ -8,8 +8,8 @@ export interface RecipeModel {
         imgUrl: string,
     },
     loc?: Location,
-    comments: Array<Comment> | [],
-    likedBy: Array<ByUser> | [],
+    comments: Comment[] | [],
+    likedBy: ByUser[] | [],
     tags: string[],
     createdAt: number
 }
