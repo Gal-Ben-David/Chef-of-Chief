@@ -68,9 +68,8 @@ export class RecipePreviewComponent {
     if (type === 'comments') {
       this.modalComponent = CommentComponent
       this.modalData = {
-        comments: this.recipe.comments,
-        recipeId: this.recipe._id,
-        byUser: this.byUser
+        recipe: { ...this.recipe },
+        byUser: { ...this.byUser }
       }
     } else if (type === 'actions') {
       this.modalComponent = RecipeActionsComponent
