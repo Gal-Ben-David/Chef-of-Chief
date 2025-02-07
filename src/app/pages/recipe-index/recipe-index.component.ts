@@ -23,14 +23,26 @@ export class RecipeIndexComponent {
   recipes$ = this.recipeService.recipes$
   loggedInUser$ = this.userService.loggedInUser$
 
-  isEditRouteActive = false
+  routeActiveType = 'home'
   private routeSubscription!: Subscription
 
   constructor(private router: Router) {
     this.routeSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         // Check if 'edit' exists in the current URL
-        this.isEditRouteActive = this.router.url.includes('/edit')
+        switch (true) {
+          case this.router.url.includes('/edit'):
+            this.routeActiveType = 'edit'
+            break;
+          case this.router.url.includes('/search'):
+            this.routeActiveType = 'search'
+            break;
+          case this.router.url.includes('/feed'):
+            this.routeActiveType = 'feed'
+            break;
+          default:
+            this.routeActiveType = 'home'
+        }
       }
     })
   }

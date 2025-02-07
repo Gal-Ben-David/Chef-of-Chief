@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { RecipeIndexComponent } from './pages/recipe-index/recipe-index.component';
 import { RecipeEditComponent } from './pages/recipe-edit/recipe-edit.component';
 import { recipeResolver } from './resolvers/recipe.resolver';
+import { FeedComponent } from './pages/feed/feed.component';
 
 export const routes: Routes = [
     {
@@ -16,6 +17,10 @@ export const routes: Routes = [
                 component: RecipeEditComponent,
                 resolve: { recipe: recipeResolver }
             },
+            {
+                path: 'feed/:userId',
+                component: FeedComponent
+            }
         ]
     }
 ]
