@@ -21,6 +21,6 @@ export const user: UserModel = {
             imgUrl: '/img/user/user-default.png',
         },
     ],
-    likedStoryIds: ['s105', 's122', 's173'], // can also use mini-stories { _id, imgUrl }
-    savedStoryIds: ['s104', 's111', 's423'], // can also use mini-stories { _id, imgUrl }
+    likedRecipeIds: ['s105', 's122', 's173'], // can also use mini-stories { _id, imgUrl }
+    savedRecipeIds: ['s104', 's111', 's423'], // can also use mini-stories { _id, imgUrl }
 }

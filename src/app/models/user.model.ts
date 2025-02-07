@@ -9,6 +9,6 @@ export interface UserModel {
 
     following: ByUser[],
     followers: ByUser[],
-    likedStoryIds: string[], // can also use mini-stories { _id, imgUrl }
-    savedStoryIds: string[], // can also use mini-stories { _id, imgUrl }
+    likedRecipeIds: string[], // can also use mini-stories { _id, imgUrl }
+    savedRecipeIds: string[], // can also use mini-stories { _id, imgUrl }
 }

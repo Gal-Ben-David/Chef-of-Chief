@@ -17,7 +17,7 @@ export class RecipeService {
 
   private _recipes$ = new BehaviorSubject<RecipeModel[]>([])
   public recipes$ = this._recipes$.asObservable()
-  private loggedInUser!: UserModel
+  private loggedInUser: UserModel | null = null
 
 
   constructor(private userService: UserService) {
@@ -49,14 +49,16 @@ export class RecipeService {
   }
 
   public getEmptyRecipe(): Partial<RecipeModel> {
+    if (!this.loggedInUser) {
+      throw new Error('User not found')
+    }
+
+    const { _id, fullname, imgUrl } = this.loggedInUser
+
     return {
       txt: '',
       imgUrl: '/img/new-post.jpeg',
-      by: {
-        _id: this.loggedInUser._id,
-        fullname: this.loggedInUser.fullname,
-        imgUrl: this.loggedInUser.imgUrl,
-      },
+      by: { _id, fullname, imgUrl },
       comments: [],
       likedBy: [],
       tags: [],

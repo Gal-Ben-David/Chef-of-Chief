@@ -23,7 +23,8 @@
                 <span>{{recipe.comments.length}}</span>
             </div>
         </div>
-        <span [innerHTML]="icons['save']" class="icon"></span>
+        <span [innerHTML]="savedByLoggedInUser ? icons['saved'] : icons['save']" class="icon"
+            (click)="onToggleSavedRecipe()"></span>
     </div>
 
     <div class="recipe-metadata">

@@ -12,6 +12,7 @@ import { UserService } from '../../services/user.service';
 import { filter, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RecipeService } from '../../services/recipe.service';
+import { UserModel } from '../../models/user.model';
 
 @Component({
   selector: 'recipe-preview',
@@ -33,23 +34,26 @@ export class RecipePreviewComponent {
   private recipeService = inject(RecipeService)
 
   loggedInUser$ = this.userService.loggedInUser$
-  byUser!: ByUser
+  byUser!: ByUser //miniUser
+  userToSave!: UserModel
   likedByLoggedInUser: boolean = false
+  savedByLoggedInUser: boolean = false
 
   icons: { [key: string]: SafeHtml } = {}
 
   ngOnInit(): void {
-    this.loadIcons(['heart', 'fullHeart', 'comment', 'save', 'more'])
+    this.loadIcons(['heart', 'fullHeart', 'comment', 'save', 'saved', 'more'])
 
     this.loggedInUser$
       .pipe(
         filter(user => !!user),
         tap(user => {
+          this.userToSave = { ...user }
           this.byUser = {
             fullname: user!.fullname,
             imgUrl: user!.imgUrl,
             _id: user!._id
-          };
+          }
         }),
         takeUntilDestroyed(this.destroyRef)
       )
@@ -59,6 +63,7 @@ export class RecipePreviewComponent {
       })
 
     this.likedByLoggedInUser = this.recipe.likedBy.some(likedBy => likedBy._id === this.byUser._id)
+    this.savedByLoggedInUser = this.userToSave.savedRecipeIds.some(savedRecipeId => savedRecipeId === this.recipe._id)
   }
 
   private loadIcons(iconNames: string[]): void {
@@ -89,7 +94,7 @@ export class RecipePreviewComponent {
     this.isModalOpen = false
   }
 
-  onToggleLike() {
+  onToggleLike(): void {
     this.likedByLoggedInUser = !this.likedByLoggedInUser
     let recipeToSave = { ...this.recipe }
     const newLikedByList = this.likedByLoggedInUser ? [...recipeToSave.likedBy, { ...this.byUser }] :
@@ -103,5 +108,15 @@ export class RecipePreviewComponent {
         error: err => console.log('err:', err),
         complete: () => console.log('Toggling like')
       })
+  }
+
+  onToggleSavedRecipe(): void {
+    this.savedByLoggedInUser = !this.savedByLoggedInUser
+    const newSavedRecipeIds = this.savedByLoggedInUser ? [...this.userToSave.savedRecipeIds, this.recipe._id] :
+      this.userToSave.savedRecipeIds.filter(recipeId => recipeId !== this.recipe._id)
+
+    this.userToSave.savedRecipeIds = newSavedRecipeIds
+
+    this.userService.saveUser(this.userToSave)
   }
 }
