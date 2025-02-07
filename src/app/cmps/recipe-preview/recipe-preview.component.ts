@@ -1,5 +1,5 @@
-import { Component, EventEmitter, inject, Input } from '@angular/core';
-import { RecipeModel } from '../../models/recipe.model';
+import { Component, DestroyRef, EventEmitter, inject, Input } from '@angular/core';
+import { ByUser, RecipeModel } from '../../models/recipe.model';
 import { CommonModule } from '@angular/common';
 import { SvgService } from '../../services/svg.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -9,6 +9,8 @@ import { CommentComponent } from '../comment/comment.component';
 import { RouterLink } from '@angular/router';
 import { RecipeActionsComponent } from '../recipe-actions/recipe-actions.component';
 import { UserService } from '../../services/user.service';
+import { filter, tap } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'recipe-preview',
@@ -26,12 +28,31 @@ export class RecipePreviewComponent {
   private svgService = inject(SvgService)
   private sanitizer = inject(DomSanitizer)
   private userService = inject(UserService)
+  private destroyRef = inject(DestroyRef)
   loggedInUser$ = this.userService.loggedInUser$
+  byUser!: ByUser
 
   icons: { [key: string]: SafeHtml } = {}
 
   ngOnInit(): void {
     this.loadIcons(['heart', 'comment', 'save', 'more'])
+
+    this.loggedInUser$
+      .pipe(
+        filter(user => !!user),
+        tap(user => {
+          this.byUser = {
+            fullname: user!.fullname,
+            imgUrl: user!.imgUrl,
+            _id: user!._id
+          };
+        }),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe({
+        error: err => console.log('Error fetching user:', err),
+        complete: () => console.log('Mini user saved')
+      })
   }
 
   private loadIcons(iconNames: string[]): void {
@@ -48,7 +69,8 @@ export class RecipePreviewComponent {
       this.modalComponent = CommentComponent
       this.modalData = {
         comments: this.recipe.comments,
-        loggedInUser$: this.loggedInUser$
+        recipeId: this.recipe._id,
+        byUser: this.byUser
       }
     } else if (type === 'actions') {
       this.modalComponent = RecipeActionsComponent

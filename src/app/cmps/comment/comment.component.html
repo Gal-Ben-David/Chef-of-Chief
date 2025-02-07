@@ -9,13 +9,20 @@
         </ul>
 
         <div class="adding-comment-container">
-            <div class="adding-comment-content" *ngIf="loggedInUser$ | async as loggedInUser">
-                <img src="{{loggedInUser.imgUrl}}" class="user-img" />
-                <div class="comment-txt">
+            <hr />
+            <div class="emoji">
+                <span *ngFor="let emoji of emojis" (click)="addEmoji(emoji)">
+                    {{ emoji }}
+                </span>
+            </div>
+            <div class="adding-comment-content">
+                <img src="{{byUser.imgUrl}}" class="user-img" />
+                <form class="comment-txt" (submit)="onSendComment()">
                     <textarea cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
-                        cdkAutosizeMaxRows="5" placeholder="Add a comment" [(ngModel)]="commentTxt"></textarea>
+                        cdkAutosizeMaxRows="5" placeholder="Add a comment" [(ngModel)]="commentTxt"
+                        name="comment"></textarea>
                     <button [disabled]="!commentTxt.trim()" class="btn btn-dark btn-send-comment">Send</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>

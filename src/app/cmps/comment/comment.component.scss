@@ -1,4 +1,5 @@
 @import '../../assets/setup/vars';
+@import '../../assets/setup/mixin';
 
 .comments-area {
     display: grid;
@@ -14,11 +15,23 @@
         .comment-list {
             display: grid;
             gap: 1em;
+            max-height: 300px;
             overflow-y: auto;
+
+            @include for-mobile-layout {
+                max-height: 190px;
+            }
         }
 
         .adding-comment-container {
             margin-block-start: auto;
+
+            .emoji {
+                display: flex;
+                gap: 1em;
+                justify-self: center;
+                margin-block-end: .5em;
+            }
 
             .adding-comment-content {
                 display: flex;
