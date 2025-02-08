@@ -103,6 +103,10 @@ export class RecipeService {
           this._recipes$.next(recipes)
           return newRecipe
         }),
+        tap(addedRecipe => {
+          const { _id, imgUrl } = addedRecipe, miniRecipe = { _id, imgUrl }
+          this.userService.addPostToUser(miniRecipe)
+        }),
         retry(1),
         catchError(this._handleError)
       )

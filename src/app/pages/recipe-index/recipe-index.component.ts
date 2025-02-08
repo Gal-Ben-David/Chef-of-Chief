@@ -18,7 +18,6 @@ import { ByUser, RecipeModel } from '../../models/recipe.model';
 export class RecipeIndexComponent {
   private recipeService = inject(RecipeService)
   private userService = inject(UserService)
-  private destroyRef = inject(DestroyRef)
 
   recipes$ = this.recipeService.recipes$
   loggedInUser$ = this.userService.loggedInUser$.pipe(
