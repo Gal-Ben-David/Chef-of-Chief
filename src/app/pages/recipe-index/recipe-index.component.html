@@ -1,2 +1,2 @@
 <router-outlet />
-<recipe-list *ngIf="routeActiveType === 'home'" [recipes]="recipes$ | async" />
+<recipe-list *ngIf="routeActiveType === 'home'" [recipes]="recipes$ | async" [loggedInUser]="loggedInUser$ | async" />

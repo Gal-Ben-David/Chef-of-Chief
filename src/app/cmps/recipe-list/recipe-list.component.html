@@ -1,3 +1,4 @@
 <section class="recipe-list">
-    <recipe-preview *ngFor="let recipe of recipes; trackBy: trackByFn" [recipe]="recipe" />
+    <recipe-preview *ngFor="let recipe of recipes; trackBy: trackByFn" [recipe]="recipe"
+        [loggedInUser]="loggedInUser" />
 </section>

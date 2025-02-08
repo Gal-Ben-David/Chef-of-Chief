@@ -22,6 +22,7 @@ import { UserModel } from '../../models/user.model';
 })
 export class RecipePreviewComponent {
   @Input() recipe!: RecipeModel
+  @Input() loggedInUser!: UserModel
   isModalOpen = false
   modalComponent: any
   modalData: any
@@ -33,7 +34,6 @@ export class RecipePreviewComponent {
   private destroyRef = inject(DestroyRef)
   private recipeService = inject(RecipeService)
 
-  loggedInUser$ = this.userService.loggedInUser$
   byUser!: ByUser //miniUser
   userToSave!: UserModel
   likedByLoggedInUser: boolean = false
@@ -43,24 +43,9 @@ export class RecipePreviewComponent {
 
   ngOnInit(): void {
     this.loadIcons(['heart', 'fullHeart', 'comment', 'save', 'saved', 'more'])
-
-    this.loggedInUser$
-      .pipe(
-        filter(user => !!user),
-        tap(user => {
-          this.userToSave = { ...user }
-          this.byUser = {
-            fullname: user!.fullname,
-            imgUrl: user!.imgUrl,
-            _id: user!._id
-          }
-        }),
-        takeUntilDestroyed(this.destroyRef)
-      )
-      .subscribe({
-        error: err => console.log('Error fetching user:', err),
-        complete: () => console.log('Mini user saved')
-      })
+    this.userToSave = { ...this.loggedInUser }
+    const { fullname, imgUrl, _id } = this.loggedInUser
+    this.byUser = { fullname, imgUrl, _id }
 
     this.likedByLoggedInUser = this.recipe.likedBy.some(likedBy => likedBy._id === this.byUser._id)
     this.savedByLoggedInUser = this.userToSave.savedRecipeIds.some(savedRecipeId => savedRecipeId === this.recipe._id)
@@ -97,8 +82,9 @@ export class RecipePreviewComponent {
   onToggleLike(): void {
     this.likedByLoggedInUser = !this.likedByLoggedInUser
     let recipeToSave = { ...this.recipe }
-    const newLikedByList = this.likedByLoggedInUser ? [...recipeToSave.likedBy, { ...this.byUser }] :
-      recipeToSave.likedBy.filter(likeBy => likeBy._id !== this.byUser._id)
+    const newLikedByList = this.likedByLoggedInUser
+      ? [...recipeToSave.likedBy, { ...this.byUser }]
+      : recipeToSave.likedBy.filter(likeBy => likeBy._id !== this.byUser._id)
 
     recipeToSave.likedBy = newLikedByList
 
@@ -112,8 +98,9 @@ export class RecipePreviewComponent {
 
   onToggleSavedRecipe(): void {
     this.savedByLoggedInUser = !this.savedByLoggedInUser
-    const newSavedRecipeIds = this.savedByLoggedInUser ? [...this.userToSave.savedRecipeIds, this.recipe._id] :
-      this.userToSave.savedRecipeIds.filter(recipeId => recipeId !== this.recipe._id)
+    const newSavedRecipeIds = this.savedByLoggedInUser
+      ? [...this.userToSave.savedRecipeIds, this.recipe._id]
+      : this.userToSave.savedRecipeIds.filter(recipeId => recipeId !== this.recipe._id)
 
     this.userToSave.savedRecipeIds = newSavedRecipeIds
 

@@ -54,4 +54,8 @@ export class CommentComponent {
   addEmoji(emoji: string): void {
     this.commentTxt += emoji
   }
+
+  trackByFn(idx: number, comment: Comment): string {
+    return comment.id
+  }
 }
