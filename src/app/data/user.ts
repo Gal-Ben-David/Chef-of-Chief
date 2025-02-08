@@ -1,4 +1,4 @@
-import { UserModel } from "../models/user.model";
+import { UserModel } from '../models/user.model';
 
 export const user: UserModel = {
     _id: 'u101',
@@ -24,4 +24,5 @@ export const user: UserModel = {
     ],
     likedRecipeIds: ['s105', 's122', 's173'], // can also use mini-stories { _id, imgUrl }
     savedRecipeIds: ['s104', 's111', 's423'], // can also use mini-stories { _id, imgUrl }
+    myRecipes: []
 }

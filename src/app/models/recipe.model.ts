@@ -32,3 +32,8 @@ export interface Location {
     lng: number,
     name: string,
 }
+
+export interface MiniRecipe {
+    _id: string,
+    imgUrl: string,
+}

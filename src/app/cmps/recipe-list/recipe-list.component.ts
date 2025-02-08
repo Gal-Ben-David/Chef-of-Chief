@@ -12,7 +12,7 @@ import { UserModel } from '../../models/user.model';
 })
 export class RecipeListComponent {
   @Input() recipes: RecipeModel[] | null = null
-  @Input() loggedInUser!: UserModel
+  @Input() loggedInUser: UserModel | null = null
 
   trackByFn(idx: number, recipe: RecipeModel): string {
     return recipe._id

@@ -1,4 +1,5 @@
 import { ByUser } from "./recipe.model";
+import { MiniRecipe } from '../models/recipe.model';
 
 export interface UserModel {
     _id: string,
@@ -12,4 +13,5 @@ export interface UserModel {
     followers: ByUser[],
     likedRecipeIds: string[], // can also use mini-stories { _id, imgUrl }
     savedRecipeIds: string[], // can also use mini-stories { _id, imgUrl }
+    myRecipes: MiniRecipe[]
 }

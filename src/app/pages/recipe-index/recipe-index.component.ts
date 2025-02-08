@@ -5,9 +5,9 @@ import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { ActivatedRoute } from '@angular/router'
-import { Subscription } from 'rxjs';
+import { filter, map, Subscription } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { RecipeModel } from '../../models/recipe.model';
+import { ByUser, RecipeModel } from '../../models/recipe.model';
 
 @Component({
   selector: 'recipe-index',
@@ -21,7 +21,10 @@ export class RecipeIndexComponent {
   private destroyRef = inject(DestroyRef)
 
   recipes$ = this.recipeService.recipes$
-  loggedInUser$ = this.userService.loggedInUser$
+  loggedInUser$ = this.userService.loggedInUser$.pipe(
+    map(user => user || null)  // If null, use defaultUser
+  );
+
 
   routeActiveType = 'home'
   private routeSubscription!: Subscription

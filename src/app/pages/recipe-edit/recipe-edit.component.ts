@@ -20,6 +20,8 @@ export class RecipeEditComponent {
   private destroyRef = inject(DestroyRef)
   private recipeService = inject(RecipeService)
   private router = inject(Router)
+  private userService = inject(UserService)
+
   postType: string = 'post'
   recipe!: RecipeModel
 
@@ -34,7 +36,7 @@ export class RecipeEditComponent {
     })
   }
 
-  onSaveRecipe() {
+  onSaveRecipe(): void {
     this.recipeService.save(this.recipe as RecipeModel)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
@@ -43,15 +45,15 @@ export class RecipeEditComponent {
       })
   }
 
-  onCancelEdit() {
+  onCancelEdit(): void {
     this.router.navigateByUrl('/')
   }
 
-  onChangePostType(type: string) {
+  onChangePostType(type: string): void {
     this.postType = type
   }
 
-  onLoadImage(ev: Event) {
+  onLoadImage(ev: Event): void {
     const reader = new FileReader()
     const input = ev.target as HTMLInputElement
     if (!input.files || input.files.length === 0) return
