@@ -6,6 +6,7 @@ export const user: UserModel = {
     password: 'mukmuk',
     fullname: 'Muki Muka',
     imgUrl: '/img/user/gal.png',
+    bio: 'Master Chef 🧑‍🍳 | Developer 👩‍💻',
 
     following: [
         {

@@ -1,0 +1,33 @@
+.feed-header {
+    display: grid;
+    gap: 1em;
+
+    .user-img-and-metadata {
+        display: flex;
+        gap: 1.5em;
+
+        .user-metadata {
+            display: grid;
+
+            .user-fullname,
+            .number {
+                font-family: 'Mukta-Medium';
+            }
+
+            .number {
+                line-height: 1;
+            }
+
+            .numerical-data {
+                display: flex;
+                gap: 1em;
+
+                &>* {
+                    display: grid;
+                    justify-items: center;
+                }
+            }
+        }
+    }
+
+}

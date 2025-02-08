@@ -1,1 +1,3 @@
-<p>feed works!</p>
+<section class="feed">
+    <feed-header *ngIf="combinedData$ | async as data" [data]="{ user: data[0], recipes: data[1] }" />
+</section>

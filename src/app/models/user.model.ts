@@ -6,6 +6,7 @@ export interface UserModel {
     password: string,
     fullname: string,
     imgUrl: string,
+    bio: string
 
     following: ByUser[],
     followers: ByUser[],
