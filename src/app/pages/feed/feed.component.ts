@@ -4,10 +4,11 @@ import { RecipeService } from '../../services/recipe.service';
 import { CommonModule } from '@angular/common';
 import { combineLatest } from 'rxjs';
 import { FeedHeaderComponent } from '../../cmps/feed-cmps/feed-header/feed-header.component';
+import { FeedPostListComponent } from '../../cmps/feed-cmps/feed-post-list/feed-post-list.component';
 
 @Component({
   selector: 'feed',
-  imports: [CommonModule, FeedHeaderComponent],
+  imports: [CommonModule, FeedHeaderComponent, FeedPostListComponent],
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.scss'
 })

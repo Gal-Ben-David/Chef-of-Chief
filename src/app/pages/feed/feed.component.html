@@ -1,3 +1,4 @@
-<section class="feed">
-    <feed-header *ngIf="combinedData$ | async as data" [data]="{ user: data[0], recipes: data[1] }" />
+<section class="feed" *ngIf="combinedData$ | async as data">
+    <feed-header [data]="{ user: data[0], recipes: data[1] }" />
+    <feed-post-list *ngFor="let post of data[0]?.myRecipes" [post]="post" />
 </section>
