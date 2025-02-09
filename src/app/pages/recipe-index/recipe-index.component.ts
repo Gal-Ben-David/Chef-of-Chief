@@ -22,7 +22,7 @@ export class RecipeIndexComponent {
   recipes$ = this.recipeService.recipes$
   loggedInUser$ = this.userService.loggedInUser$.pipe(
     map(user => user || null)  // If null, use defaultUser
-  );
+  )
 
 
   routeActiveType = 'home'

@@ -1,3 +1,22 @@
+@import '../../assets/setup/mixin';
+
 .feed {
-    max-width: 300px;
+    // max-width: 300px;
+    margin-block-end: 60px;
+    display: grid;
+    justify-self: center;
+
+    .post-list {
+        display: grid;
+        grid-template-columns: 200px 200px 200px;
+        // grid-auto-rows: 150px;
+        margin-block-start: 2em;
+        grid-auto-flow: dense;
+
+        gap: .2em;
+
+        @include for-mobile-layout {
+            grid-template-columns: repeat(3, minmax(100px, 1fr));
+        }
+    }
 }

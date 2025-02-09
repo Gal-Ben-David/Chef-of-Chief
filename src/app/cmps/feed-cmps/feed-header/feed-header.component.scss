@@ -1,6 +1,7 @@
 .feed-header {
     display: grid;
     gap: 1em;
+    justify-self: start;
 
     .user-img-and-metadata {
         display: flex;

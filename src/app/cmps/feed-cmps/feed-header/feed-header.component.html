@@ -1,24 +1,28 @@
 <section class="feed-header">
     <div class="user-img-and-metadata">
         <img [src]="data.user?.imgUrl" class="user-img" />
+
         <div class="user-metadata">
             <div class="user-fullname">{{data.user?.fullname}}</div>
             <div class="numerical-data">
+
                 <div class="posts-number">
                     <span class="number">{{ data.user?.myRecipes?.length }}</span>
                     <span>posts</span>
                 </div>
+
                 <div class="followers-number">
                     <span class="number">{{ data.user?.followers?.length }}</span>
                     <span>follower</span>
                 </div>
+
                 <div class="following-number">
                     <span class="number">{{ data.user?.following?.length }}</span>
                     <span>following</span>
                 </div>
             </div>
-
         </div>
+
     </div>
     <div class="user-bio">{{data.user?.bio}}</div>
 </section>
