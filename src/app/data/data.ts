@@ -4,11 +4,11 @@ export const recipes: Array<RecipeModel> = [
     {
         _id: 's101',
         txt: 'Bread',
-        imgUrl: '/img/food/bread.png',
+        imgUrl: 'https://res.cloudinary.com/dvykycdey/image/upload/v1739096294/bread_icszln.png',
         by: {
             _id: 'u101',
             fullname: 'Ulash Ulashi',
-            imgUrl: '/img/user/user-default.png',
+            imgUrl: 'https://res.cloudinary.com/dvykycdey/image/upload/v1739096584/user-default_qjeegh.png',
         },
         loc: {
             lat: 11.11,
@@ -21,14 +21,14 @@ export const recipes: Array<RecipeModel> = [
                 by: {
                     _id: 'u105',
                     fullname: 'Bob',
-                    imgUrl: '/img/user/user-default.png',
+                    imgUrl: 'https://res.cloudinary.com/dvykycdey/image/upload/v1739096584/user-default_qjeegh.png',
                 },
                 txt: 'good one!',
                 likedBy: [
                     {
                         _id: 'u105',
                         fullname: 'Bob',
-                        imgUrl: '/img/user/user-default.png',
+                        imgUrl: 'https://res.cloudinary.com/dvykycdey/image/upload/v1739096584/user-default_qjeegh.png',
                     },
                 ],
             },
@@ -37,7 +37,7 @@ export const recipes: Array<RecipeModel> = [
                 by: {
                     _id: 'u106',
                     fullname: 'Dob',
-                    imgUrl: '/img/user/user-default.png',
+                    imgUrl: 'https://res.cloudinary.com/dvykycdey/image/upload/v1739096584/user-default_qjeegh.png',
                 },
                 txt: 'not good!',
             },
@@ -46,12 +46,12 @@ export const recipes: Array<RecipeModel> = [
             {
                 _id: 'u105',
                 fullname: 'Bob',
-                imgUrl: '/img/user/user-default.png',
+                imgUrl: 'https://res.cloudinary.com/dvykycdey/image/upload/v1739096584/user-default_qjeegh.png',
             },
             {
                 _id: 'u106',
                 fullname: 'Dob',
-                imgUrl: '/img/user/user-default.png',
+                imgUrl: 'https://res.cloudinary.com/dvykycdey/image/upload/v1739096584/user-default_qjeegh.png',
             },
         ],
         tags: ['fun', 'romantic'],
@@ -60,11 +60,11 @@ export const recipes: Array<RecipeModel> = [
     {
         _id: 's102',
         txt: 'Abbadi',
-        imgUrl: '/img/food/abbadi.png',
+        imgUrl: 'https://res.cloudinary.com/dvykycdey/image/upload/v1739096355/abbadi_p5vvkh.png',
         by: {
             _id: 'u102',
             fullname: 'Abbi Abbambi',
-            imgUrl: '/img/user/user-default.png',
+            imgUrl: 'https://res.cloudinary.com/dvykycdey/image/upload/v1739096584/user-default_qjeegh.png',
         },
         loc: {
             lat: 11.11,
@@ -77,14 +77,14 @@ export const recipes: Array<RecipeModel> = [
                 by: {
                     _id: 'u105',
                     fullname: 'Bob',
-                    imgUrl: '/img/user/user-default.png',
+                    imgUrl: 'https://res.cloudinary.com/dvykycdey/image/upload/v1739096584/user-default_qjeegh.png',
                 },
                 txt: 'good one!',
                 likedBy: [
                     {
                         _id: 'u105',
                         fullname: 'Bob',
-                        imgUrl: '/img/user/user-default.png',
+                        imgUrl: 'https://res.cloudinary.com/dvykycdey/image/upload/v1739096584/user-default_qjeegh.png',
                     },
                 ],
             },
@@ -93,7 +93,7 @@ export const recipes: Array<RecipeModel> = [
                 by: {
                     _id: 'u106',
                     fullname: 'Dob',
-                    imgUrl: '/img/user/user-default.png',
+                    imgUrl: 'https://res.cloudinary.com/dvykycdey/image/upload/v1739096584/user-default_qjeegh.png',
                 },
                 txt: 'Yesss!',
             },
@@ -102,12 +102,12 @@ export const recipes: Array<RecipeModel> = [
             {
                 _id: 'u105',
                 fullname: 'Bob',
-                imgUrl: '/img/user/user-default.png',
+                imgUrl: 'https://res.cloudinary.com/dvykycdey/image/upload/v1739096584/user-default_qjeegh.png',
             },
             {
                 _id: 'u106',
                 fullname: 'Dob',
-                imgUrl: '/img/user/user-default.png',
+                imgUrl: 'https://res.cloudinary.com/dvykycdey/image/upload/v1739096584/user-default_qjeegh.png',
             },
         ],
         tags: ['fun', 'romantic'],

@@ -5,7 +5,7 @@ export const user: UserModel = {
     username: 'Muko',
     password: 'mukmuk',
     fullname: 'Muki Muka',
-    imgUrl: '/img/user/gal.png',
+    imgUrl: 'https://res.cloudinary.com/dvykycdey/image/upload/v1739096673/gal_rz5dcd.png',
     bio: 'Master Chef 🧑‍🍳 | Developer 👩‍💻',
 
     following: [

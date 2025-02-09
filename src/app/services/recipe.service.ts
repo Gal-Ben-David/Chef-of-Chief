@@ -57,7 +57,7 @@ export class RecipeService {
 
     return {
       txt: '',
-      imgUrl: '/img/new-post.jpeg',
+      imgUrl: 'https://res.cloudinary.com/dvykycdey/image/upload/v1739096391/new-post_zwplby.jpg',
       by: { _id, fullname, imgUrl },
       comments: [],
       likedBy: [],
